@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "trailingSlash": false,
+  "name": "floppa-nft-project",
   "rewrites": [
-    { "source": "/wtf/:path*", "destination": "/api/index" }
+    { "source": "/(.*)", "destination": "/api/index" }
   ],
   "trailingSlash": false
 }
