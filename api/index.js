@@ -28,8 +28,8 @@ export default async function handler(req) {
     
     // This forwards exactly to RESOLVER_DOMAIN/wtf (including query parameters if any)
     // If you want it to forward to just RESOLVER_DOMAIN/ instead, change the line below to:
-    const targetUrl = GOH_SAG + "/" + incomingUrl.search;
-    //const targetUrl = GOH_SAG + incomingUrl.pathname + incomingUrl.search;
+    //const targetUrl = GOH_SAG + "/" + incomingUrl.search;
+    const targetUrl = GOH_SAG + incomingUrl.pathname + incomingUrl.search;
 
     const out = new Headers();
     let clientIp = null;
