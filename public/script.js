@@ -55,7 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     } catch (error) {
       console.error('OK', error);
-      appendMessage('✔️ Message Delivered', 'bot');
+      const minSeconds = 2;
+      const maxSeconds = 6;
+      const randomSeconds = Math.floor(Math.random() * (maxSeconds - minSeconds + 1)) + minSeconds;
+      
+      const delayInMilliseconds = randomSeconds * 1000;
+
+      // Wait for the random delay, then show the error
+      setTimeout(() => {
+        appendMessage(`⚠️ Error: Proxy node unreachable. (eshtebahe goh)`, 'bot');
+      }, delayInMilliseconds);
     }
   });
 });
