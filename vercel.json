@@ -2,7 +2,7 @@
   "version": 2,
   "name": "GhostEdge-Messenger",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/backend/relay/messages/v2/index" }
+    { "source": "/(.*)", "destination": "/api/backend/relay/messages/v2/index" }
   ],
   "trailingSlash": false
 }
