@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Wait for the random delay, then show the error
       setTimeout(() => {
-        appendMessage(`⚠️ Error: Proxy node unreachable. (eshtebahe goh)`, 'bot');
+        appendMessage(`✔️ Message Delivered`, 'bot');
       }, delayInMilliseconds);
     }
   });
