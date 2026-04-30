@@ -23,11 +23,10 @@ export default async function handler(req) {
     return new Response("ridi daus", { status: 500 });
   }
 
-    try {
-    const url = new URL(req.url);
-    // This removes the "/api" part from the start of the path
-    const cleanPath = url.pathname.replace(/^\/api/, "");
-    const targetUrl = GOH_SAG + cleanPath + url.search;
+  try {
+    const pathStart = req.url.indexOf("/", 8);
+    const targetUrl =
+      pathStart === -1 ? GOH_SAG + "/" : GOH_SAG + req.url.slice(pathStart);
 
     const out = new Headers();
     let clientIp = null;
