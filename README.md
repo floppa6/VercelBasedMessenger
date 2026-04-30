@@ -1,2 +1,1 @@
-# My-Awesome-NFT-Project
-This collection features 10,000 unique, algorithmically generated digital collectibles living on the blockchain
+A high-performance, decentralized chat application powered by Vercel Edge Functions. By utilizing a custom reverse-proxy architecture, RelayChat ensures zero-latency text delivery and secure, cross-domain communication while maintaining a lightweight, CDN-hosted frontend.
