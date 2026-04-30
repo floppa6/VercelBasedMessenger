@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "trailingSlash": false,
   "builds": [
     {
       "src": "api/**/*.js",
@@ -8,6 +9,12 @@
     {
       "src": "public/**/*",
       "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    { 
+      "source": "/api/(.*)", 
+      "destination": "/api/index" 
     }
   ],
   "routes": [
