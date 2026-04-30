@@ -2,9 +2,7 @@
   "version": 2,
   "trailingSlash": false,
   "rewrites": [
-    {
-      "source": "/api/:path*",
-      "destination": "/api/index"
-    }
-  ]
+    { "source": "/wtf/:path*", "destination": "/api/index" }
+  ],
+  "trailingSlash": false
 }
