@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "name": "floppa-nft-project",
+  "name": "GhostEdge-Messenger",
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" }
+    { "source": "/(.*)", "destination": "/backend/relay/messages/v2/api/index" }
   ],
   "trailingSlash": false
 }
