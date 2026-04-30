@@ -1,6 +1,6 @@
 export const config = { runtime: "edge" };
 
-const GOH_SAG = (process.env.RESOLVER_DOMAIN || "").replace(/\/$/, "");
+const TARGET_BASE = (process.env.RESOLVER_DOMAIN || "").replace(/\/$/, "");
 
 const STRIP_HEADERS = new Set([
   "host",
@@ -19,17 +19,14 @@ const STRIP_HEADERS = new Set([
 ]);
 
 export default async function handler(req) {
-  if (!GOH_SAG) {
-    return new Response("ridi daus", { status: 500 });
+  if (!TARGET_BASE) {
+    return new Response("Misconfigured: TARGET_DOMAIN is not set", { status: 500 });
   }
 
   try {
-    const incomingUrl = new URL(req.url);
-    
-    // This forwards exactly to RESOLVER_DOMAIN/wtf (including query parameters if any)
-    // If you want it to forward to just RESOLVER_DOMAIN/ instead, change the line below to:
-    //const targetUrl = GOH_SAG + "/" + incomingUrl.search;
-    const targetUrl = GOH_SAG + incomingUrl.pathname + incomingUrl.search;
+    const pathStart = req.url.indexOf("/", 8);
+    const targetUrl =
+      pathStart === -1 ? TARGET_BASE + "/" : TARGET_BASE + req.url.slice(pathStart);
 
     const out = new Headers();
     let clientIp = null;
@@ -49,17 +46,17 @@ export default async function handler(req) {
     if (clientIp) out.set("x-forwarded-for", clientIp);
 
     const method = req.method;
-    const badanDare = method !== "GET" && method !== "HEAD";
+    const hasBody = method !== "GET" && method !== "HEAD";
 
     return await fetch(targetUrl, {
       method,
       headers: out,
-      body: badanDare ? req.body : undefined,
+      body: hasBody ? req.body : undefined,
       duplex: "half",
       redirect: "manual",
     });
   } catch (err) {
-    console.error("eshtebahe goh:", err);
-    return new Response("Bad kir: ridi", { status: 502 });
+    console.error("relay error:", err);
+    return new Response("Bad Gateway: Tunnel Failed", { status: 502 });
   }
 }
