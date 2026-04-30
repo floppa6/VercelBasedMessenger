@@ -1,0 +1,7 @@
+{
+  "name": "Floppa NFT Project",
+  "version": "2",
+  "description": "Collection features 10,000 unique, algorithmically generated digital collectibles living on the Base",
+  "private": true,
+  "license": "MIT"
+}
